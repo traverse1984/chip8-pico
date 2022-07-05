@@ -1,0 +1,15 @@
+# Cargo Configuration for the https://github.com/rp-rs/rp-hal.git repository.
+# Copyright (c) The RP-RS Developers, 2021
+# This file is MIT or Apache-2.0 as per the repository README.md file
+
+[build]
+target = "thumbv6m-none-eabi"
+
+[target.thumbv6m-none-eabi]
+runner = "elf2uf2-rs -d"
+rustflags = [
+    "-C", "link-arg=--nmagic",
+    "-C", "link-arg=-Tlink.x",
+    "-C", "inline-threshold=5",
+    "-C", "no-vectorize-loops",
+]
